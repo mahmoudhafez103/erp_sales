@@ -31,6 +31,16 @@
                 <td>{{$item->total_cost}}</td>
                 <td>{{$item->pill_type}}</td>
                 <td>{{$item->added_by}}</td>
+                <td>
+                        <a href="{{ url('invoices/' . $item->id . '/edit') }}" class="btn btn-danger btn-sm">Edit </a>
+                        <form method="post" action="{{ url('invoices/' . $item->id) }}">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary btn-sm" type="submit">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
             </tr>
             @endforeach
             
