@@ -13,16 +13,17 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        echo "1";
-        //
+        $invoices = invoice::getAll();
+        return view('invoices::index', ['invoices' => $invoices]);
     }
+       
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('invoices::create');
     }
 
     /**
@@ -30,7 +31,9 @@ class InvoiceController extends Controller
      */
     public function store(StoreinvoiceRequest $request)
     {
-        //
+        $inputs =  $request->all();
+        $invoice_id = Invoice::create($inputs);
+        return redirect('invoices');
     }
 
     /**
@@ -38,7 +41,8 @@ class InvoiceController extends Controller
      */
     public function show(invoice $invoice)
     {
-        //
+        return view('invoices::show');
+
     }
 
     /**
@@ -46,7 +50,8 @@ class InvoiceController extends Controller
      */
     public function edit(invoice $invoice)
     {
-        //
+        $invoice = Invoice::getInvoice($invoice);
+        return view('invoices::edit', compact('invoice'));
     }
 
     /**
@@ -54,14 +59,19 @@ class InvoiceController extends Controller
      */
     public function update(UpdateinvoiceRequest $request, invoice $invoice)
     {
-        //
+        $inputs =  $request->all();
+        Invoice::updateInvoice($invoice, $inputs);
+        return redirect('products');
     }
+   
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(invoice $invoice)
     {
-        //
+      
+        Invoice::deletInvoice($invoice);
+        return redirect('invoices');
     }
 }
