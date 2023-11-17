@@ -13,9 +13,9 @@ class InvoiceDetailController extends Controller
      */
     public function index()
     {
-        echo "1";
-
-        //
+        $invoiceDetail = invoiceDetail::all;
+        // $invoiceDetail = invoiceDetail::get;
+        return $invoiceDetail;
     }
 
     /**
@@ -31,7 +31,16 @@ class InvoiceDetailController extends Controller
      */
     public function store(StoreinvoiceDetailRequest $request)
     {
-        //
+        $invoiceDetail = new invoiceDetail();
+        $invoiceDetail->invoice_id = $request->invoice_id;
+        $invoiceDetail->store_id = $request->store_id;
+        $invoiceDetail->item_code = $request->item_code;
+        $invoiceDetail->quantity = $request->quantity;
+        $invoiceDetail->unit_price = $request->unit_price;
+        $invoiceDetail->total_price = $request->total_price;
+        $invoiceDetail->added_by = $request->added_by;
+        $invoiceDetail->save();
+        return response('Successfully');
     }
 
     /**
