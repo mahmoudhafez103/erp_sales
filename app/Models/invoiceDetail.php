@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class invoiceDetail extends Model
 {
     use HasFactory;
-    protected $table = "invoiceDetail";
 
     public static function create($data)
     {
@@ -22,8 +21,8 @@ class invoiceDetail extends Model
         $invoiceDetail->added_by = $data['added_by'];
         return  $invoiceDetail->save();
     }
-    public static function getAll(){
+    public static function getAll()
+    {
         return self::all();
     }
-
 }

@@ -72,11 +72,11 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateinvoiceRequest $request, invoice $invoice)
+    public function update(UpdateinvoiceRequest $request)
     {
         $inputs =  $request->all();
-        Invoice::updateInvoice($invoice, $inputs);
-        return redirect('products');
+        // Invoice::updateInvoice( $inputs);
+        // return redirect('products');
     }
 
 

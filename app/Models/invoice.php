@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class invoice extends Model
 {
     use HasFactory;
-    protected $table = "invoices";
-    // public $timestamps = fales ;
+
 
 
     public static function create($data)
     {
 
-        $invoices = new invoices;
+        $invoices = new invoice;
         $invoices->invoice_date = $data['invoice_date'];
         $invoices->customer_code = $data['customer_code'];
         $invoices->is_approved = $data['is_approved'];
@@ -28,7 +27,8 @@ class invoice extends Model
         $invoices->added_by = $data['added_by'];
         return  $invoices->save();
     }
-    public static function getAll(){
+    public static function getAll()
+    {
         return self::all();
     }
 }

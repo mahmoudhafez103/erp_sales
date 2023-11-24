@@ -13,7 +13,7 @@ class InvoiceDetailController extends Controller
      */
     public function index()
     {
-        $invoiceDetail = invoiceDetail::all;
+        $invoiceDetail = invoiceDetail::all();
         // $invoiceDetail = invoiceDetail::get;
         return $invoiceDetail;
     }
