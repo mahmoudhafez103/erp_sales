@@ -9,7 +9,22 @@ class invoice extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'invoice_date',
+        'customer_code',
+        'notes',
+        'discount_value',
+        'total_cost_items',
+        'total_befor_discount',
+        'total_cost',
+        'pill_type',
+        'added_by',
+    ];
 
+    public function invoice_details()
+    {
+        return $this->hasMany(invoiceDetail::class);
+    }
 
     public static function create($data)
     {

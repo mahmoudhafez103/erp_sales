@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\invoice;
 use App\Http\Requests\StoreinvoiceRequest;
 use App\Http\Requests\UpdateinvoiceRequest;
+use App\Models\product;
 
 class InvoiceController extends Controller
 {
@@ -15,7 +16,8 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = invoice::getAll();
-        return view('invoices::index', ['invoices' => $invoices]);
+        $products = product::getproducts();
+        return view('invoices.index', ['invoices' => $invoices, 'products' => $products]);
     }
 
 
@@ -72,7 +74,7 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateinvoiceRequest $request)
+    public function update(UpdateinvoiceRequest $request, invoice $invoice)
     {
         $inputs =  $request->all();
         // Invoice::updateInvoice( $inputs);

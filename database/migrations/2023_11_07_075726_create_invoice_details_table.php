@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('invoice_id');
-            $table->integer('store_id');
-            $table->integer('item_code');
+            $table->foreignId('invoice_id')->constrained();
+            $table->integer('product_id');
             $table->decimal('quantity', 10, 2);
             $table->decimal('unit_price', 10, 2);
             $table->decimal('total_price', 10, 2);

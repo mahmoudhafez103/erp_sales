@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreinvoiceDetailRequest extends FormRequest
+class UpdateinvoiceDetailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,7 @@ class StoreinvoiceDetailRequest extends FormRequest
     {
         return [
             'invoice_id' => 'required',
-            'store_id' => 'required',
-            'item_code' => 'required',
+            'product_id' => 'required',
             'quantity' => 'required|decimal',
             'unit_price' => 'required|decimal',
             'total_price' => 'required|decimal',
@@ -36,8 +35,7 @@ class StoreinvoiceDetailRequest extends FormRequest
     {
         return [
             'invoice_id.required' => 'A invoice_id is required',
-            'store_id.required' => 'A store_id is required',
-            'item_code.required' => 'A item_code is required',
+            'product_id.required' => 'A product_id is required',
             'quantity.required' => 'A quantity is required',
             'quantity.decimal' => 'quantity shoud decimal',
             'unit_price.required' => 'A unit_price is required',

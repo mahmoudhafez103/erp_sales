@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('cost', 10, 2)->default(0.00);
             $table->boolean('is_active')->default(0);
             $table->integer('in_stock')->default(0);
-            $table->text('notes')->default('NULL')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
